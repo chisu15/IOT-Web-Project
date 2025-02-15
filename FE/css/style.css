@@ -1,0 +1,92 @@
+
+body {
+    font-family: Roboto;
+    background-image: linear-gradient( 93.2deg,  rgba(24,95,246,1) 14.4%, rgba(27,69,166,1) 90.8% );
+    color: #007bff;
+}
+.avatar{
+    height: 36px; 
+}
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    background-color: aliceblue;
+    box-shadow: 0 0 10px #000000;
+}
+
+.sidebar .nav-link {
+    color: #333;
+    padding: 10px;
+}
+
+.sidebar .nav-link.active {
+    background: #007bff;
+    color: white;
+}
+
+.card {
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+button{
+    outline: none;
+    border: none;
+}
+a{
+    text-decoration: none;
+    color: #000000;
+}
+.logo a{
+    font-size: xx-large;
+}
+.user{
+    border: 1px;
+    cursor: pointer;
+    transition: all ease-in-out 0.2s;
+}
+.user:hover{
+    /* text-decoration: underline; */
+    border: #007bff solid 1px;
+    color: #007bff;
+}
+.user-name{
+    margin: 0;
+}
+.content{
+    color: white;
+}
+.nav-item{
+    height: 48px;
+    position: relative;
+    transition: all 0.2s ease;
+    font-weight: bold;
+    border-bottom: #000000 solid 1px;
+}
+.nav-item .active{
+    color: white !important;
+    background-color: #113D9C !important;
+    padding-left: 30px !important;
+    transition: all ease 0.2s;
+}
+.nav-item .active:hover{
+    color: white !important;
+    background-color: #113D9C !important;
+    padding-left: 30px !important;
+    transition: all ease 0.2s;
+}
+.nav-item .active::after{
+    content: '';
+    width: 8px;
+    height: 48px;
+    background-color: #1A5BE8;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.nav-item:hover{
+    padding-left: 30px;
+    background-color: rgba(183, 183, 211, 0.5) !important;
+    transition: all 0.2s ease;
+}
