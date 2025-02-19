@@ -1,28 +1,33 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const ctx1 = document.getElementById("deviceChart").getContext("2d");
-    new Chart(ctx1, {
-        type: "line",
-        data: {
-            labels: ["Mon", "Tue", "Wed", "Thu", "Fri"],
-            datasets: [{
-                label: "Active Devices",
-                data: [10, 15, 12, 18, 22],
-                borderColor: "#007bff",
-                fill: false
-            }]
+const ctx = document.getElementById('realtimeChart').getContext('2d');
+let chart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: [],
+        datasets: [{
+            label: 'Dữ liệu cảm biến',
+            data: [],
+            borderColor: 'blue',
+            fill: false,
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+            x: { display: true },
+            y: { display: true }
         }
-    });
-
-    const ctx2 = document.getElementById("referralsChart").getContext("2d");
-    new Chart(ctx2, {
-        type: "bar",
-        data: {
-            labels: ["Facebook", "Twitter", "Google"],
-            datasets: [{
-                label: "Referrals",
-                data: [2301, 2107, 2308],
-                backgroundColor: ["#007bff", "#6f42c1", "#28a745"]
-            }]
-        }
-    });
+    }
 });
+
+function updateChartData() {
+    const newData = Math.floor(Math.random() * 100);
+    if (chart.data.labels.length > 10) {
+        chart.data.labels.shift();
+        chart.data.datasets[0].data.shift();
+    }
+    chart.data.labels.push(new Date().toLocaleTimeString());
+    chart.data.datasets[0].data.push(newData);
+    chart.update();
+}
+setInterval(updateChartData, 2000);

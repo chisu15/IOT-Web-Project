@@ -53,6 +53,13 @@
                             <span>Lịch sử</span>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="./profile.html" class="nav-link rounded-2 h-100 d-flex align-content-center
+                        align-items-center gap-2">
+                            <span class="material-symbols-outlined">person</span>
+                            <span>Trang cá nhân</span>
+                        </a>
+                    </li>
                 </ul>
                 <div class="version text-black-50 w-100 text-center">
                     <hr>
@@ -63,41 +70,96 @@
             </div>
 
         </div>
-        <div class="content w-100 p-1 d-flex flex-column gap-0">
-            <nav class="nav d-flex justify-content-between align-items-center w-100">
-                <div class="navigation">
-                    Thống kê >
+        <div class="content-wrapper w-100">
+            <div class="content w-100 h-100 p-1 d-flex flex-column gap-0">
+                <nav class="nav navbar-container d-flex justify-content-between align-items-center w-100">
+                    <div class="navigation">Thống kê ></div>
+                    <div class="dropdown">
+                        <button class="btn d-flex align-items-center gap-2 dropdown-toggle" type="button"
+                            id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img class="avatar rounded-circle object-fit-cover" src="./assets/images/avatar_default.jpg"
+                                alt="User Avatar">
+                            <span class="user-name text-light">B21DCPT011</span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                            <li><a class="dropdown-item d-flex align-items-center gap-2" href="./profile.html"><span
+                                        class="material-symbols-outlined">
+                                        person
+                                    </span>Trang cá nhân</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item text-danger d-flex align-items-center gap-2"
+                                    href="./login.html"><span class="material-symbols-outlined">
+                                        logout
+                                    </span>Đăng xuất</a></li>
+                        </ul>
+                    </div>
+                </nav>
+                <hr class="mt-0">
+                <div class="container-fluid dashboard-container">
+                    <div class="row g-2 mb-2">
+                        <div class="col-md-4">
+                            <div class="card text-center">
+                                <div class="card-body fw-bolder" id="temp-box">Nhiệt độ: --°C</div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card text-center">
+                                <div class="card-body fw-bolder" id="humidity-box">Độ ẩm: --%</div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card text-center">
+                                <div class="card-body fw-bolder" id="light-box">Ánh sáng: -- lx</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row g-2 flex-grow-1">
+                        <div class="col-md-10">
+                            <div class="card chart-container w-100">
+                                <div class="card-body">
+                                    <canvas id="realtimeChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2 sensor-control">
+                            <label class="form-check-label" for="switch-temp">
+                                <div class="sensor-card p-3 text-center">
+                                    <span class="material-symbols-outlined">thermostat</span>
+                                    Nhiệt độ
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" id="switch-temp">
+                                    </div>
+                                </div>
+                            </label>
+                            <label class="form-check-label" for="switch-humidity">
+                                <div class="sensor-card p-3 text-center">
+                                    <span class="material-symbols-outlined">water_drop</span>
+                                    Độ ẩm
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" id="switch-humidity">
+                                    </div>
+                                </div>
+                            </label>
+                            <label class="form-check-label" for="switch-light">
+                                <div class="sensor-card p-3 text-center">
+                                    <span class="material-symbols-outlined">light_mode</span>
+                                    Ánh sáng
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" id="switch-light">
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
                 </div>
-                <div class="dropdown">
-                    <button class="btn d-flex align-items-center gap-2 dropdown-toggle" type="button" id="userDropdown"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        <img class="avatar rounded-circle object-fit-cover" src="./assets/images/avatar_default.jpg"
-                            alt="User Avatar">
-                        <span class="user-name text-light">B21DCPT011</span>
-                    </button>
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-                        <li><a class="dropdown-item d-flex align-items-center gap-2" href="./profile.html"><span
-                                    class="material-symbols-outlined">
-                                    person
-                                </span>Trang cá nhân</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item text-danger d-flex align-items-center gap-2"
-                                href="./login.html"><span class="material-symbols-outlined">
-                                    logout
-                                </span>Đăng xuất</a></li>
-                    </ul>
-                </div>
-            </nav>
-            <hr class="mt-0">
-            <div class="content-main">
-                
             </div>
         </div>
+
     </div>
     <script src="./js/main.js"></script>
-    <script src="./js/charts.js"></script>
+    <script src="./js/chart.js"></script>
     <script src="./js/bootstrap.bundle.min.js"></script>
 </body>
 

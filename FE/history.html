@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IoT</title>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <div class="d-flex gap-3">
+        <!-- NAVBAR -->
+        <div class="sidebar">
+            <div
+                class="container-fluid d-flex flex-column justify-content-between align-items-center align-middle h-100 w-100 p-0">
+                <div class="logo w-100 text-center">
+                    <a class="navbar-brand fw-bolder" href="./index.html">IOT</a>
+                    <hr>
+                </div>
+                <ul class="pages nav flex-column gap-2 w-100 h-100">
+                    <li class="nav-item">
+                        <a href="./index.html" class="nav-link rounded-2 h-100 d-flex align-content-center
+                        align-items-center gap-2">
+                            <span class="material-symbols-outlined">
+                                dashboard
+                            </span>
+                            <span>Thống kê</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="./device.html" class="nav-link rounded-2 h-100 d-flex align-content-center
+                        align-items-center gap-2">
+                            <span class="material-symbols-outlined">
+                                display_settings
+                            </span>
+                            <span>Cảm biến</span>
+                        </a>
+                    </li>
+                    <li class="nav-item gap-2 py-0 active">
+                        <a href="./history.html" class="nav-link p-0 d-flex h-100 align-content-center
+                        align-items-center gap-2 active">
+                            <span class="material-symbols-outlined">
+                                manage_history
+                            </span>
+                            <span>Lịch sử</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="./profile.html" class="nav-link rounded-2 h-100 d-flex align-content-center
+                        align-items-center gap-2">
+                            <span class="material-symbols-outlined">person</span>
+                            <span>Trang cá nhân</span>
+                        </a>
+                    </li>
+                </ul>
+                <div class="version text-black-50 w-100 text-center">
+                    <hr>
+                    <p>
+                        v1.0
+                    </p>
+                </div>
+            </div>
+
+        </div>
+        <div class="content-wrapper w-100">
+            <div class="content w-100 h-100 p-1 d-flex flex-column gap-0">
+                <nav class="nav navbar-container d-flex justify-content-between align-items-center w-100">
+                    <div class="navigation">Lịch sử hoạt động ></div>
+                    <div class="dropdown">
+                        <button class="btn d-flex align-items-center gap-2 dropdown-toggle" type="button"
+                            id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img class="avatar rounded-circle object-fit-cover" src="./assets/images/avatar_default.jpg"
+                                alt="User Avatar">
+                            <span class="user-name text-light">B21DCPT011</span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                            <li><a class="dropdown-item d-flex align-items-center gap-2" href="./profile.html"><span
+                                        class="material-symbols-outlined">
+                                        person
+                                    </span>Trang cá nhân</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item text-danger d-flex align-items-center gap-2"
+                                    href="./login.html"><span class="material-symbols-outlined">
+                                        logout
+                                    </span>Đăng xuất</a></li>
+                        </ul>
+                    </div>
+                </nav>
+
+                <hr class="mt-0">
+
+                <div class="container-fluid dashboard-container">
+                    <div class="row mb-3 align-items-center">
+                        <!-- Ô tìm kiếm + Nút tìm kiếm -->
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <input type="text" id="searchInput" class="form-control"
+                                    placeholder="🔍 Tìm kiếm ID, nhiệt độ, độ ẩm, ánh sáng, thời gian">
+                                <button class="btn btn-warning" onclick="searchHistory()">🔍 Tìm kiếm</button>
+                            </div>
+                        </div>
+
+                        <!-- Sắp xếp và chọn page size -->
+                        <div class="col-md-3">
+                            <select id="sortSelect" class="form-select">
+                                <option value="asc">📅 Sắp xếp theo thời gian (Tăng dần)</option>
+                                <option value="desc">📅 Sắp xếp theo thời gian (Giảm dần)</option>
+                            </select>
+                        </div>
+                        <div class="col-md-2">
+                            <select id="pageSizeSelect" class="form-select">
+                                <option value="5">Hiển thị 5 mục</option>
+                                <option value="10">Hiển thị 10 mục</option>
+                                <option value="20">Hiển thị 20 mục</option>
+                            </select>
+                        </div>
+
+                        <!-- Nút áp dụng và đặt lại -->
+                        <div class="col-md-3 d-flex gap-2">
+                            <button class="btn btn-warning w-50" onclick="applyFilters()">✅ Áp dụng</button>
+                            <button class="btn btn-secondary w-50" onclick="resetFilters()">🔄 Đặt lại</button>
+                        </div>
+                    </div>
+                    <!-- Bảng dữ liệu -->
+                    <div class="table-container">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover text-center">
+                                <thead class="table-primary">
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Thiết bị</th>
+                                        <th>Hành động</th>
+                                        <th>Thời gian</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="historyTable">
+                                    <!-- Dữ liệu sẽ được load từ JavaScript -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Phân trang cố định -->
+                    <div class="pagination-container">
+                        <nav>
+                            <ul class="pagination" id="pagination">
+                                <!-- Nút phân trang sẽ được thêm vào bằng JavaScript -->
+                            </ul>
+                        </nav>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script src="./js/main.js"></script>
+    <script src="./js/history.js"></script>
+    <script src="./js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

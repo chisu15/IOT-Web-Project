@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IoT</title>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="login-body">
+    <div class="login-container">
+        <div class="login-card">
+            <h2 class="text-center mb-4">Đăng Nhập</h2>
+
+            <!-- Form đăng nhập -->
+            <form id="loginForm">
+                <div class="input-group mb-3">
+                    <span class="material-symbols-outlined">person</span>
+                    <input type="text" id="username" class="form-control" placeholder="Tên đăng nhập" required>
+                </div>
+
+                <div class="input-group mb-3">
+                    <span class="material-symbols-outlined">lock</span>
+                    <input type="password" id="password" class="form-control" placeholder="Mật khẩu" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100">Đăng Nhập</button>
+            </form>
+
+            <p class="text-center mt-3">
+                Chưa có tài khoản? <a href="#">Đăng ký</a>
+            </p>
+        </div>
+    </div>
+
+    <script src="js/login.js"></script>
+</body>
+
+</html>
